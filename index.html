@@ -8,19 +8,73 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
+    <audio id="button-sound" src="https://www.fesliyanstudios.com/play-mp3/387"></audio>
 
     <section class="game">
-      <div class="score-tracker">
-        <div class="player-score">
-          <h2>You</h2>
-          <p>Score: 0</p>
+        <div class="match fadeOut">
+          <h2 class="display-winner">Choose an option</h2>
+          <div class="player-computer-containers">
+            <div class="player-container">
+              <div class="player-score">
+                <h2>You</h2>
+                <p>Score: 0</p>
+              </div>
+              <div class="game-options">
+                  <button class="pushable game-option-button player-button">
+                    <span class="shadow"></span>
+                    <span class="edge"></span>
+                    <span class="front">
+                      Rock
+                    </span>
+                  </button>
+                  <button class="pushable game-option-button player-button">
+                    <span class="shadow"></span>
+                    <span class="edge"></span>
+                    <span class="front">
+                      Paper
+                    </span>
+                  </button>
+                  <button class="pushable game-option-button player-button">
+                    <span class="shadow"></span>
+                    <span class="edge"></span>
+                    <span class="front">
+                      Scissors
+                    </span>
+                  </button>
+              </div>
+            </div>
+            <div class="computer-container">
+              <div class="computer-score">
+                <h2>Computer</h2>
+                <p>Score: 0</p>
+              </div>
+              <div class="game-options">
+                  <button class="pushable game-option-button">
+                    <span class="shadow"></span>
+                    <span class="edge"></span>
+                    <span class="front">
+                      Rock
+                    </span>
+                  </button>
+                  <button class="pushable game-option-button">
+                    <span class="shadow"></span>
+                    <span class="edge"></span>
+                    <span class="front">
+                      Paper
+                    </span>
+                  </button>
+                  <button class="pushable game-option-button">
+                    <span class="shadow"></span>
+                    <span class="edge"></span>
+                    <span class="front">
+                      Scissors
+                    </span>
+                  </button>
+              </div>
+            </div>
+          </div>
+          </div>
         </div>
-        <div class="computer-score">
-          <h2>Computer</h2>
-          <p>Score: 0</p>
-        </div>
-      </div>
-
       <div class="loading-screen">
         <h1>ROCK PAPER SCISSORS</h1>
         <button class="pushable">
@@ -30,14 +84,6 @@
             START GAME
           </span>
         </button>
-      </div>
-
-      <div class="match">
-        <div class="options">
-          <button class="rock">Rock</button>
-          <button class="paper">Paper</button>
-          <button class="scissors">Scissors</button>
-        </div>
       </div>
 
     </section>
