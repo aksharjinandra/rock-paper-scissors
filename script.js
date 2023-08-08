@@ -1,47 +1,88 @@
-const _ = require("lodash"); 
 
-function getComputerChoice() {
-    let choices = ["rock", "paper", "scissors"]; 
-    let randomElement = _.sample(choices); 
-    return randomElement; 
+//fade-out loading screen and fade-in game screen
+const startGame = () => {
+    const startGameButton = document.querySelector(".loading-screen button"); 
+    const loadingScreen = document.querySelector(".loading-screen"); 
+    const match = document.querySelector(".match"); 
+
+    startGameButton.addEventListener("click", () => {
+        loadingScreen.classList.add("fadeOut");
+        match.classList.add("fadeIn");
+    });
+};
+
+
+//generating random computer selection
+function computerPlay() {
+    const computerOptions = ["Rock", "Paper", "Scissors"];
+    let randomElement = computerOptions[Math.floor(Math.random() * computerOptions.length)];
+    return randomElement;
+};
+
+//function for determining whether the player chose rock, paper, or scissors
+const playerButtons = document.querySelectorAll('.player-button');
+
+function detectPlayerButtonClick() {    
+    function handleButtonClick(event) {
+        return event.target.innerText;
+    }
+    for (const button of playerButtons){ 
+        button.onclick = handleButtonClick;
+    }
 }
 
 
-function playRound(playerSelection, computerSelection) {
-    //allows for input to be case-sensitive 
-    playerSelection = playerSelection.toLowerCase();
-
-    if (playerSelection === computerSelection) {
-        return "You tied with the computer!";
-    } else if (playerSelection === "rock") {
-        if (computerSelection === "scissors") {
-            return "You win! Rock beats scissors.";
+function determineWinner (playerChoice, computerChoice) {
+    const displayWinner = document.querySelector(".display-winner");
+    console.log(computerChoice)
+    console.log(playerChoice)
+    if (playerChoice === computerChoice) {
+        displayWinner.textContent = "It's a tie!"; 
+        return;
+    } else if (playerChoice === "Rock") {
+        if (computerChoice === "Scissors") {
+            displayWinner.textContent = "You Win! Rock beats Scissors";
+            return;
         } else {
-            return "You lose! Paper beats rock.";
+            displayWinner.textContent = "You Lose! Rock loses to Paper.";
+            return;
         }
-    } else if (playerSelection === "paper") {
-        if (computerSelection === "rock") {
-            return "You win! Paper beats rock.";
+    } else if (playerChoice === "Paper") {
+        if (computerChoice === "Rock") {
+            displayWinner.textContent = "You Win! Paper beats Rock";
+            return;
         } else {
-            return "You lose! Scissors beats paper.";
+            displayWinner.textContent = "You Lose! Paper loses to Scissors.";
+            return;
         }
-    } else {
-        if (computerSelection === "paper") {
-            return "You win! Scissors beats paper.";
+    } else if (playerChoice === "Scissors") {
+        if (computerChoice === "Paper") {
+            displayWinner.textContent = "You Win! Scissors beats Paper";
+            return;
         } else {
-            return "You lose! Rock beats scissors.";
+            displayWinner.textContent = "You Lose! Scissors loses to Rock.";
+            return;
         }
     }
 }
 
-const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/387");
-const buttons = document.querySelectorAll("button");
+//main game function
+function playGame() {
 
-buttons.forEach(button => {
-  button.addEventListener("click", () => {
-    audio.play();
-  });
-});
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+    playerButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            computerChoice = computerPlay();
+            //determine winner
+            determineWinner(this.innerText, computerChoice)
+            //update button colors 
+        })
+    })
+    
+} 
+
+function start() {
+    startGame();
+    playGame();
+}
+
+start();

@@ -8,34 +8,77 @@ section {
     font-family: 'Kanit', sans-serif;
 }
 
-.score-tracker {
-    height: 30vh;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 40px;
+.match {
+  transition: opacity 0.5s ease 0.5s;
+  padding-top: 100px;
 }
 
-.score-tracker p {
-    text-align: center;
-    padding: 5px;
-    font-size: 30px;
+.display-winner {
+  text-align: center;
+  font-size: 60px;
+  padding-top: 100px;
+  padding-bottom: 40px;
+}
+
+.player-computer-containers{
+  display: flex;
+  justify-content: center;
+}
+
+.player-container, .computer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.player-score h2, .computer-score h2 {
+  font-size: 50px;
+}
+
+.player-score p, .computer-score p {
+  font-size: 20px;
+  text-align: center;
+}
+
+.game-options {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
 }
 
 /* Loading screen styling */
 .loading-screen {
+  margin-top: 0px;
     display: flex;
-    height: 60vh;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    transition: opacity 0.5s ease;
 }
 
 .loading-screen h1 {
-    font-size: 70px;
+  display: flex;
+  font-size: 70px;
+  padding: 50px;
+}
+
+/* Fade in and fade out*/
+div.fadeOut {
+  opacity: 0;
+  pointer-events: none; 
+} 
+
+div.fadeIn {
+  opacity: 1; 
+  pointer-events: all; 
 }
 
 /* Button styling */
+
+.game-option-button {
+  padding: 10px;
+}
+
 .pushable {
     position: relative;
     background: transparent;
@@ -88,4 +131,9 @@ section {
   
   .pushable:focus:not(:focus-visible) {
     outline: none;
+  }
+
+  .game-option-button .front {
+    padding: 11px 40px;
+    font-size: 1rem;
   }
